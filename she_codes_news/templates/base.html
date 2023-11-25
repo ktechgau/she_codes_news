@@ -1,25 +1,31 @@
-<!doctype html>
+{% load static %}
+<!DOCTYPE html>
 
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>She Codes News</title>
-        <meta name="description" content="">
-        <meta name="author" content="Hayley van Waas">
-        <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="">
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <title>She Codes News</title>
+    <meta name="description" content="" />
+    <meta name="author" content="Karla Gaudet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Manjari&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
+    {% block stylesheets %}{% endblock %}
+  </head>
 
-    <body>
-        <header>
-            <div id="header-text">
-                <a id="header-link" href="{% url 'news:index' %}">
-                    <h1>She {Codes} News</h1>
-                </a>
-            </div>
-            <!-- include nav here -->
-        </header>
+  <body>
+    <header>
+      <div id="header-text">
+        <a id="header-link" href="{% url 'news:index' %}">
+          <h1>She {Codes} News</h1>
+        </a>
+      </div>
+      {% include './nav.html' %}
+    </header>
 
-        <!-- content blocks here -->
-    </body>
+    <!-- content blocks here -->
+    {% block content %}{%endblock %}
+  </body>
 </html>
