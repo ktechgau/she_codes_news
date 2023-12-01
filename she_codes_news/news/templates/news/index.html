@@ -6,11 +6,9 @@
 {% endblock %}
 
 {% block content %}
-  <br>
-  <a href="{% url 'news:newStory' %}">Write New Story</a>
-
-
-<h2>Latest News</h2>
+<div class="Header_1">
+<h1>Latest News</h1>
+</div>
 
 <div id="latest-stories">
   {% if latest_stories %} {% for story in latest_stories %}

@@ -4,6 +4,16 @@ from django.contrib.auth import get_user_model
 
 
 class NewsStory(models.Model):
+#creating categories
+    
+
+    CategoryChoices = models.TextChoices(
+        'blog', 'Blog',
+        'news', 'In the News',
+        'wins', 'Wins Wall',
+    )
+    
+
     title = models.CharField(max_length=200)
     author = models.ForeignKey(
         get_user_model(),
@@ -11,3 +21,14 @@ class NewsStory(models.Model):
     )
     pub_date = models.DateTimeField()
     content = models.TextField()
+#field for category with choices and default
+    category = models.CharField(
+        max_length = 10,
+        choices = [
+        ('blog', 'Blog'),
+        ('news', 'In the News'),
+        ('wins', 'Wins Wall'),
+        ],
+
+        default = 'blog ' #this is the default
+    )
