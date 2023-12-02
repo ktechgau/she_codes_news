@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}" />
+{% endblock %}
+
+{% block content %}
+<h1>Search Results</h1>
+
+<form method="get" action="{% url 'news:search_results' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+</form>
+
+<!--<h2>Results:</h2>
+{% for story in stories %}
+    <div>
+        <h3>{{ story.title }}</h3>
+        <p>{{ story.content }}</p>
+    </div>
+{% endfor %}
+{% endblock %} -->

@@ -1,0 +1,19 @@
+<!--trying to add the feature update-->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Update</button>
+    </form>
+    {% else %}
+    <h3> You are not logged in! Please login to continue</h3>
+
+    {% endif %}
+
+    {% endblock %}

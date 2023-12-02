@@ -6,7 +6,7 @@ from .models import NewsStory
 class StoryForm(ModelForm):
     class Meta:
         model = NewsStory
-        fields = ['title','category', 'pub_date', 'content']
+        fields = ['title','category', 'image_url', 'pub_date', 'content']
         widgets = {
             'pub_date': forms.DateInput (
                 format='%m/%d/%Y',
@@ -20,3 +20,9 @@ class StoryForm(ModelForm):
 
 #Accessing the category choices from database
     category = forms.ChoiceField(choices=NewsStory._meta.get_field('category').choices)
+
+
+#Search feature via category
+class SearchForm(forms.Form):
+    category = forms.ChoiceField(choices=NewsStory.CategoryChoices.choices)
+    

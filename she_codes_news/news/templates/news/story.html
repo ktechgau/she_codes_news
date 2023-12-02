@@ -12,7 +12,7 @@
     <h2>{{ story.title }}</h2>
     <h4>{{ story.author }}</h4>
     <div id="story-content">
-        <img src="{% static '/news/images/placeholder-5.jpg' %}">
+        <img src={{story.image_url}}>
         {{ story.content|linebreaks }}
     </div>
 </div>
