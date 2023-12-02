@@ -11,10 +11,16 @@ header {
     border-bottom: 1px solid #000;
 }
 
-#header-link img{
-    height:auto;
-    width: 200px;
-    padding:0px;
+.orange{
+    color: orange;
+}
+
+.purple{
+    color: rebeccapurple;
+}
+
+.header-text{
+    margin: 2px 2px;
 }
 
 
@@ -43,14 +49,22 @@ h3 {
     margin: 80px;
 }
 
-nav {
-    flex-basis: 20%;
-    display: flex;
-    flex-direction: row;
-    justify-content:flex-end;
-    color:white;
+
+#navbar li{
+    display: inline-block;
+    font-size: 1rem;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 0.5rem;
 }
 
+li a{
+    color:rebeccapurple;
+}
+
+li a:hover{
+    color:orange;
+}
 
 a {
     margin: 2px;
