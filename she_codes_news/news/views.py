@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from .forms import StoryForm, SearchForm
 from django.shortcuts import render
 from django.db.models import Q
+from django.contrib.auth.models import User
 
 
 
@@ -37,17 +38,26 @@ class AddStoryView(generic.CreateView):
         form.instance.author = self.request.user
         return super() .form_valid(form)
     
-
+# Search feature for stories by category and author
 class SearchResultsView(generic.ListView):
+    model = NewsStory
     template_name = 'news/search_results.html'
     context_object_name = 'stories'
 
     def get_queryset(self):
         form = SearchForm(self.request.GET)
+        queryset = super().get_queryset()
+
         if form.is_valid():
-            category = form.cleaned_data['category']
-            return NewsStory.objects.filter(category=category)
-        return NewsStory.objects.all()
+            category = form.cleaned_data.get('category')
+            author_query = form.cleaned_data.get('author')
+
+            if category:
+                queryset = queryset.filter(category=category)
+            if author_query:
+                queryset = queryset.filter(author__username__icontains=author_query)
+            
+        return queryset
 
 #trying to add the update feature
 

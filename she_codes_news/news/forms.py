@@ -19,10 +19,18 @@ class StoryForm(ModelForm):
         }
 
 #Accessing the category choices from database
-    category = forms.ChoiceField(choices=NewsStory._meta.get_field('category').choices)
+    #category = forms.ChoiceField(choices=NewsStory._meta.get_field('category').choices)
 
 
 #Search feature via category
 class SearchForm(forms.Form):
-    category = forms.ChoiceField(choices=NewsStory.CategoryChoices.choices)
-    
+
+    category_choices = [(choice, label) for choice, label in NewsStory.CategoryChoices.choices]
+    category = forms.ChoiceField(choices=[('', 'Select category')] + category_choices, required=False)
+    author = forms.CharField(max_length=100, required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(SearchForm, self).__init__(*args, **kwargs)
+        self.fields['category'].choices = [
+            (choice, choice)for choice, _ in NewsStory.CategoryChoices.choices
+        ]
