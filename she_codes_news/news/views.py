@@ -20,6 +20,7 @@ class IndexView(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
         context['CategoryChoices'] = NewsStory.CategoryChoices.choices
+        
         #context['search_form'] = SearchForm()
         return context
     
@@ -46,17 +47,18 @@ class SearchResultsView(generic.ListView):
 
     def get_queryset(self):
         form = SearchForm(self.request.GET)
+        
         queryset = super().get_queryset()
 
         if form.is_valid():
-            category = form.cleaned_data.get('category')
+            category2 = form.cleaned_data.get('category')
             author_query = form.cleaned_data.get('author')
 
-            if category:
-                queryset = queryset.filter(category=category)
+            if category2:
+                queryset = queryset.filter(category=category2)
             if author_query:
                 queryset = queryset.filter(author__username__icontains=author_query)
-            
+      
         return queryset
 
 #trying to add the update feature

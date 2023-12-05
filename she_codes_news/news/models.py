@@ -7,8 +7,7 @@ class NewsStory(models.Model):
 
 #creating categories
     CategoryChoices = models.TextChoices(
-        'blog', 'Blog',
-        'news', 'In the News',
+        'blog', 'Blog','news', 'In the News',
         'wins', 'Wins Wall',
     )
     title = models.CharField(max_length=200)

@@ -1,6 +1,6 @@
-<form method="get" action="{ url 'search_results' %}">
-    {{ form.category}}
-    {{ form.author }}
-    <button type="submit">Search</button>
+{% extends 'base.html' %}
 
-</form>
+{% load static %} 
+
+{% block content %}
+<h1> Search Results</h1>

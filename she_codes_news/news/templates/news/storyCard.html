@@ -1,15 +1,18 @@
-<div class="story-card" id="story-card-{{ position }}">
+<div class="story-card" id="story-card-{{ position }}" style="background-image: url('{% if story.image_url %}{{ story.image_url }}{% else %}https://picsum.photos/600{% endif %}')" >
     <a href="{% url 'news:story' story.id %}">
-        {% if story.image_url%}
+        <!--{% if story.image_url%}
             <img src={{story.image_url}}>
         {% else %}
             <img src="https://picsum.photos/600">
-        {% endif %}
+        {% endif %}-->
         <div class="story-card-text">
-            <h3>{{ story.title }}  <a href="{% url 'news:update_story' pk=story.pk %}">{Edit}</a></h3>
-            <h4>{{ story.get_category_display }}</h4>
-            <h4>{{ story.author }}</h4>
-            <h4>{{ story.pub_date }}</h4>
+            <section class="description">
+                <h3>{{ story.get_category_display }}</h3>
+                <h4>{{ story.title }}  
+                <h5><a href="{% url 'news:update_story' pk=story.pk %}">{Edit}</a></h5>
+                <h6>{{ story.author }}</h6>
+                <h6>{{ story.pub_date }}</h6>
+            </section>
         </div>
     </a>
 </div>

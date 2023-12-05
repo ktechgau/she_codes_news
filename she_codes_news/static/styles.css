@@ -1,14 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: "Raleway", sans-serif;
+  }
 
 body {
-    background-color: rgb(240, 239, 239);
+    
+    background-color: white;
+    /*background-color: rgb(240, 239, 239);*/
 }
 
 header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #000;
+    justify-content: flex-end;
+    background-color: rebeccapurple;
+    padding: 20px 40px;
+    margin:0px;
+    height:100%;
+}
+
+.search-field{
+    border-color: white;
+    background-color:transparent;
+    color: white;
 }
 
 .orange{
@@ -19,17 +37,23 @@ header {
     color: rebeccapurple;
 }
 
-.header-text{
-    margin: 2px 2px;
+.page-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    height: 60px;
+    padding: 0px 40px;
+    margin:0px; 
+  
 }
-
 
 img {
     filter: grayscale(0%);
 }
 
 h1 {
-    font-family: 'Montserrat Subrayada', sans-serif;
+    font-family: "Raleway", sans-serif;
     text-decoration: none;
     font-size: 4rem;
     margin: 0;
@@ -37,7 +61,7 @@ h1 {
 }
 
 h2 {
-   font-family: 'Montserrat Subrayada', sans-serif; 
+   /*font-family: 'Montserrat Subrayada', sans-serif; */
 }
 
 h3 {
@@ -45,9 +69,7 @@ h3 {
     margin: 0;
 }
 
-.Header_1{
-    margin: 80px;
-}
+
 
 
 #navbar li{
@@ -73,5 +95,21 @@ a {
 }
 
 a, p {
-    font-family: monospace;
+    /*font-family: monospace;*/
+}
+
+.header_1{
+    background:linear-gradient(180deg,#663399 , #6617cb, #cb218e),
+    url('images/background_image.jpg') no-repeat;
+    padding: 200px 40px;
+    height:100%;
+
+}
+
+.neon{
+    font-family: "Satisfy", Sans-serif;
+    font-weight: 200;
+    color: white;
+    text-shadow: 0 0 3px #fff, 0 0 5px #fff, 0 0 10px #fff, 0 0 21px #ffa300, 0 0 41px #ffa300, 0 0 46px #ffa300, 0 0 50px #ffa300, 0 0 75px #ffa300;
+    
 }

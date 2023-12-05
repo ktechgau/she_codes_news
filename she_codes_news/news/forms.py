@@ -22,7 +22,7 @@ class StoryForm(ModelForm):
     #category = forms.ChoiceField(choices=NewsStory._meta.get_field('category').choices)
 
 
-#Search feature via category
+#Search feature via category and author
 class SearchForm(forms.Form):
 
     category_choices = [(choice, label) for choice, label in NewsStory.CategoryChoices.choices]

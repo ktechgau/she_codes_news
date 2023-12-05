@@ -17,14 +17,18 @@
 
   <body>
     <header>
+      
+    </header>
+    <section class="page-top" style="background-image: url('{% static "images/background_image.jpg" %}')">
       <div id="header-text">
         <a id="header-link" href="{% url 'news:index' %}">
           
           <h2><span class="purple">She</span> <span class="orange">{Codes} </span><span class="purple">News</span></h2>
         </a>
       </div>
+      
       {% include './nav.html' %}
-    </header>
+    </section>
 
     <!-- content blocks here -->
     {% block content %}{%endblock %}

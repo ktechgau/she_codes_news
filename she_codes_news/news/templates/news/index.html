@@ -6,27 +6,56 @@
 {% endblock %}
 
 {% block content %}
-<div class="Header_1">
-<h1>Latest News</h1>
+
+<div id="header-search">
+  <!--Search for author and category-->
+  <form  method="get" action="{% url 'news:search_results' %}">
+  
+  
+    <input class="search-field" type="text" name="author" placeholder="Search by Author..">
+  
+    <select class="search-field" name="category">
+    <option value="" selected disabled>Select Category</option>
+    {% for choice in CategoryChoices %}
+      <option value="{{ choice.0 }}">{{ choice.1}}</option>
+    {% endfor %}
+    </select>
+    <button type="submit">Search</button>
+   </form>
 </div>
 
-<div id="latest-stories">
-  {% if latest_stories %} {% for story in latest_stories %}
-  <p>
-    {% include './storyCard.html' with story=story position=forloop.counter %}
-  </p>
-  {% endfor %} {% else %}
-  <p>No stories are available.</p>
-  {% endif %}
-</div>
+<section class = "header_1" >
+  <div class="Header_1" >
+    <h1 class="neon">Latest News</h1>
+  </div>
+</section>
 
-<div id="all-stories">
-  {% if latest_stories %} 
-    {% for story in all_stories %} 
-    {% include './storyCard.html' with story=story position=forloop.counter %} 
-    {% endfor %} 
-  {% else %}
-  <p>No stories are available.</p>
-  {% endif %}
-</div>
+
+<section class="lastest">
+  <div id="latest-stories">
+    {% if latest_stories %} 
+      {% for story in latest_stories %}
+        {% include './storyCard.html' with story=story position=forloop.counter %}
+      {% endfor %} 
+    {% else %}
+        <p>No stories are available.</p>
+    {% endif %}
+  </div>
+</section>
+
+
+  <div id="all-stories">
+    {% if latest_stories %} 
+      {% for story in all_stories %} 
+        {% include './storyCard.html' with story=story  %} 
+      {% endfor %} 
+    {% else %}
+       <p>No stories are available.</p>
+    {% endif %}
+  </div>
 {% endblock %}
+
+
+
+
+
