@@ -45,5 +45,5 @@ class SearchAuthorView(generic.DetailView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context ['all_stories'] = NewsStory.objects.filter(author__id=self.object.id)
+        context ['all-stories'] = NewsStory.objects.filter(author__id=self.object.id)
         return context

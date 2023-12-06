@@ -8,9 +8,8 @@ html {
   }
 
 body {
+    background-image:linear-gradient(180deg,#663399 , #6617cb, #cb218e);
     
-    background-color: white;
-    /*background-color: rgb(240, 239, 239);*/
 }
 
 header {
@@ -107,7 +106,7 @@ a, p {
 }
 
 .header_1{
-    background:linear-gradient(180deg,#663399 , #6617cb, #cb218e),
+    
     url('images/background_image.jpg') no-repeat;
     padding: 200px 40px;
     height:100%;
