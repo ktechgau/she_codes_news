@@ -1,16 +1,37 @@
 .story-card {
     margin: 2px;
-    border: 1px solid #000;
     padding: 5px;
+    
+}
+
+.story-card:hover{
+    box-shadow: 0 0 3px #fff, 0 0 5px #fff, 0 0 10px #fff, 0 0 21px #ffa300, 0 0 3px #ffa300, 0 0 7px #ffa300;
 }
 
 .story-card img {
     width: 100%;
-    height: 75%;
+    height: 400px;
     object-fit: cover;
+    border-radius: 5px;  
 }
 
+.story-card-text{
+   display:block;
+    bottom:0;
+    padding:30px;
+    
+    background: white;
+     color: black; 
+    width: 100%; 
+    height:100%;
+    transition: .5s ease; 
+    opacity:1; 
+    font-size: 20px;
+    text-align: center;
+} 
+
 #latest-stories {
+    
     margin: 50px auto;
     display: grid;
     grid-column-start: auto;
@@ -18,9 +39,9 @@
     grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 30px;
     grid-template-areas: "left-1 right-1" "left-1 right-2" "left-1 right-3";
-    max-height: 600px;
-    max-width: 1300px;
-   border: purple solid 2px;
+    max-height: 500px;
+    max-width: 1250px;
+  
 }
 
 h3{
@@ -30,23 +51,28 @@ h3{
 
 #story-card-1 {
     grid-area: left-1;
-    border: red solid 2px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
 
 }
 
+
+
+#story-card-1:hover{
+    box-shadow: 0 0 3px #fff, 0 0 5px #fff, 0 0 10px #fff, 0 0 21px #ffa300, 0 0 3px #ffa300, 0 0 7px #ffa300; 
+}
+
+
+
 #story-card-2 {
     grid-area: right-1;
-    border: green solid 2px;
 }
 
 #story-card-3 {
     grid-area: right-2;
-    border: blue solid 2px;
 }
 
 #story-card-4 {
     grid-area: right-3;
-    border: orange solid 2px; 
 }
 
 #story-card-2 a,
@@ -56,6 +82,7 @@ h3{
     max-height: 5px;
     width: 100%;
     height: 100%;
+    border: green solid 1px;
 }
 
 #story-card-2 .story-card-text h3,
@@ -74,8 +101,9 @@ h3{
 #story-card-3 img,
 #story-card-4 img {
     width: 100%;
-    height: 100%;
+    height: 75%;
     margin-right: 5px;
+    border: blue solid 1px;
 }
 
 #all-stories {
@@ -84,7 +112,7 @@ h3{
     grid-column-start: auto;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 40px;
-    margin: 40px auto;
+    margin: 60px auto;
 
 }
 

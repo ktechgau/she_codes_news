@@ -13,8 +13,8 @@
   </div>
 </section>
 
-<div id="all-stories">
-  {% if latest_stories %} 
+<div id="all_stories">
+  {% if all_stories %} 
     {% for story in all_stories %} 
       {% include './storyCard.html' with story=story  %} 
     {% endfor %} 

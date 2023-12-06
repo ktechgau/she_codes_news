@@ -11,15 +11,19 @@
       href="https://fonts.googleapis.com/css?family=Manjari&display=swap"
       rel="stylesheet"
     />
+
+    
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
     {% block stylesheets %}{% endblock %}
+
+    
   </head>
 
   <body>
     <header>
       <p>maybe insert social media here if we have time</p>
     </header>
-    <section class="page-top" style="background-image: url('{% static "images/background_image.jpg" %}')">
+    <section class="page-top">
       <div id="header-text">
         <a id="header-link" href="{% url 'news:index' %}">
           

@@ -8,7 +8,7 @@ html {
   }
 
 body {
-    background-image:linear-gradient(180deg,#663399 , #6617cb, #cb218e);
+    background-image:linear-gradient(180deg,#663399 , #6617cb, #cb218e,#6617cb,#663399);
     
 }
 
@@ -21,14 +21,7 @@ header {
     padding: 5px 40px;
 }
 
-#header-search{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    background-color: rebeccapurple;
-    margin:0px;
-    padding: 5px 40px;
-}
+
 
 .search-field{
     border-color: white;
@@ -101,13 +94,11 @@ a {
     color: #000;
 }
 
-a, p {
-    /*font-family: monospace;*/
-}
+
 
 .header_1{
     
-    url('images/background_image.jpg') no-repeat;
+    background-image: ('images/background_image.jpg') no-repeat;
     padding: 200px 40px;
     height:100%;
 
