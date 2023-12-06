@@ -18,9 +18,17 @@ header {
     align-items: center;
     justify-content: flex-end;
     background-color: rebeccapurple;
-    padding: 20px 40px;
     margin:0px;
-    height:100%;
+    padding: 5px 40px;
+}
+
+#header-search{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rebeccapurple;
+    margin:0px;
+    padding: 5px 40px;
 }
 
 .search-field{

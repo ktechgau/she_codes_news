@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from .models import NewsStory
+from django.contrib.auth import get_user_model
 
 
 class StoryForm(ModelForm):
@@ -22,15 +23,16 @@ class StoryForm(ModelForm):
     #category = forms.ChoiceField(choices=NewsStory._meta.get_field('category').choices)
 
 
-#Search feature via category and author
-class SearchForm(forms.Form):
+#Search feature category
+# class SearchForm(forms.Form):
+# #     category = forms.ChoiceField(
+# #         choices=NewsStory.CategoryChoices.choices, required=False,
+# #         widget=forms.Select(attrs={'class': 'form-control'}),)
+    
+# # Search feature via author  
+#     author = forms.ModelChoiceField(
+#         queryset=get_user_model().objects.all(), required=False,
+#         widget=forms.Select(attrs={'class': 'form-control'}),
+#         )
 
-    category_choices = [(choice, label) for choice, label in NewsStory.CategoryChoices.choices]
-    category = forms.ChoiceField(choices=[('', 'Select category')] + category_choices, required=False)
-    author = forms.CharField(max_length=100, required=False)
-
-    def __init__(self, *args, **kwargs):
-        super(SearchForm, self).__init__(*args, **kwargs)
-        self.fields['category'].choices = [
-            (choice, choice)for choice, _ in NewsStory.CategoryChoices.choices
-        ]
+    

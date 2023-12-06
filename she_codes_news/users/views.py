@@ -1,10 +1,14 @@
+from typing import Any
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django.views import generic
 from .models import CustomUser, UserProfile
 from .forms import CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.views.generic import DetailView
+from django.shortcuts import render, redirect, get_object_or_404
+from news.models import NewsStory
+
 
 class CreateAccountView(CreateView):
     form_class = CustomUserCreationForm
@@ -29,3 +33,17 @@ def  account_view(request):
         return render(request, 'users/account.html', {'user_profile': user_profile})
     else:
         return redirect('login')
+
+# Search feature for stories by author
+class SearchAuthorView(generic.DetailView):
+    model= CustomUser
+    template_name = 'news/author_search.html'
+    context_object_name = 'author'
+
+    def get_object(self, *args, **kwargs):
+        return get_object_or_404(CustomUser, username=self.kwargs['username'])
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['all_stories'] = NewsStory.objects.filter(author__id=self.object.id)
+        return context

@@ -1,24 +1,26 @@
 {% extends 'base.html' %} 
-{% load static %} 
 
-{% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}" />
-{% endblock %}
 
 {% block content %}
-<h1>Search Results</h1>
+    <h2>Search Results</h2>
 
-<form method="get" action="{% url 'news:search_results' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Search</button>
-</form>
+    <form method="get" action="{% url 'news:search_results' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
 
-<!--<h2>Results:</h2>
-{% for story in stories %}
-    <div>
-        <h3>{{ story.title }}</h3>
-        <p>{{ story.content }}</p>
-    </div>
-{% endfor %}
-{% endblock %} -->
+{% if stories %}
+    <u>{% for story in stories %}
+        
+            <h2>{{story.title}}</h2>
+                <p>Author: {{ story.author.username }}</p>
+                <p> Category: {{ story.get.category_display }}</p>
+                <p>Published Date: {{ story.pub_date }}</p>
+           
+        {% endfor %}
+    </ul>
+{% else %}
+    <p> No stories</p>
+{% endif %}
+{% endblock %}

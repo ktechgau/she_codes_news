@@ -1,11 +1,11 @@
 from django.views import generic
-from .models import NewsStory
+from .models import NewsStory,StoryCategory
 from django.urls import reverse_lazy
-from .forms import StoryForm, SearchForm
+from .forms import StoryForm
 from django.shortcuts import render
 from django.db.models import Q
 from django.contrib.auth.models import User
-
+from django.views.generic import ListView
 
 
 class IndexView(generic.ListView):
@@ -19,8 +19,8 @@ class IndexView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
-        context['CategoryChoices'] = NewsStory.CategoryChoices.choices
-        
+        context['CategoryChoices'] = StoryCategory.CategoryChoices.choices
+
         #context['search_form'] = SearchForm()
         return context
     
@@ -39,27 +39,71 @@ class AddStoryView(generic.CreateView):
         form.instance.author = self.request.user
         return super() .form_valid(form)
     
-# Search feature for stories by category and author
-class SearchResultsView(generic.ListView):
-    model = NewsStory
-    template_name = 'news/search_results.html'
-    context_object_name = 'stories'
 
-    def get_queryset(self):
-        form = SearchForm(self.request.GET)
+    
+
+    
+#     model = NewsStory
+#     template_name = 'news/search_results.html'
+#     context_object_name = 'stories'
+
+#     def get_queryset(self):
+#         form= SearchForm(self.request.GET)
+#         queryset = super().get_queryset()
+
+    #     if form.is_valid():
+    #         category = form.cleaned_data('category')
+    #         author = form.cleaned_data['author']
+
+    #         if category:
+    #             queryset = queryset.filter(category=category)
+
+    #         if author:
+    #             queryset = queryset.filter(author=author)
         
-        queryset = super().get_queryset()
 
-        if form.is_valid():
-            category2 = form.cleaned_data.get('category')
-            author_query = form.cleaned_data.get('author')
+    #     return queryset
+    
+    # def get_context_data(self, **kwargs):
+    #     context = supßer().get_context_data(**kwargs)
+    #     context['form'] = SearchForm(self.request.GET)
+    #     return context
+    
+    # def search_results(request):
+    #     view = SearchResultsView.as_view()
+    #     return view(request)
+        #filtering using author and category
+        # queryset = NewsStory.object.filter(category=category, author=author)
 
-            if category2:
-                queryset = queryset.filter(category=category2)
-            if author_query:
-                queryset = queryset.filter(author__username__icontains=author_query)
+    # else:
+    #     queryset = NewsStory.objects.all()
+
+    # context = {
+    #     'form': form,
+    #     'stories': queryset,
+    # }
+
+    # return render(request, 'news/search_results.html', context)
+# class SearchResultsView(generic.ListView):
+#     model = NewsStory
+#     form_class_2 = SearchForm
+#     template_name = 'news/search_results.html'
+#     context_object_name = 'stories'
+
+#     def get_queryset(self):
+#         form = SearchForm(self.request.GET)
+#         queryset = super().get_queryset()
+
+#         if form.is_valid():
+#             category2 = form.cleaned_data.get('category')
+#             author_query = form.cleaned_data.get('author')
+
+#             if category2:
+#                 queryset = queryset.filter(category=category2)
+#             if author_query:
+#                 queryset = queryset.filter(Q(author__username__icontains=author_query | Q(author__first_name__icontains=author_query) | Q(author__last_name__icontains=author_query)))
       
-        return queryset
+#         return queryset
 
 #trying to add the update feature
 

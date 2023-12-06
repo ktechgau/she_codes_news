@@ -4,7 +4,6 @@ from django.contrib.auth import get_user_model
 
 
 class NewsStory(models.Model):
-
 #creating categories
     CategoryChoices = models.TextChoices(
         'blog', 'Blog','news', 'In the News',
@@ -28,5 +27,19 @@ class NewsStory(models.Model):
         ('wins', 'Wins Wall'),
         ],
 
-        default = 'blog ' #this is the default
+        default = 'blog' #this is the default
     )
+
+class StoryCategory (models.Model):
+    class CategoryChoices(models.TextChoices):
+        BLOG = "blog", ("Blog")
+        NEWS = "news", ('In the News')
+        WIN = "wins", ('Wins Wall')
+    
+    CatStory = models.CharField(
+        max_length=20,
+        choices=CategoryChoices.choices,
+        default=CategoryChoices.BLOG,
+        
+    )
+    
