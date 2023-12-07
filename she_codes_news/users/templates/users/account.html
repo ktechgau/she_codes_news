@@ -1,9 +1,29 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}" />
+{% endblock %}
+
 
 {% block content %}
-<h2> Your Account</h2>
-<p> Username: {{ user_profile.user.username }}</p>
-<p> Email {{ user_profile.user.email }}</p>
-<p>Bio: {{ user_profile.bio }} </p>
+<section class = "header_1" >
+    <div class="Header_1" >
+      <h1 class="neon">Profile</h1>
+    </div>
+  </section>
+  
+  <section id="Tell">
+  <h2 id="tell"> Your Profile </h2>
+  <h3>Here are your account details. </h3>
+  <br>
+  <h3>We're glad you're here with us!</h3>
+  </section>
 
+<div class="container">
+  <h3>You details:</h3>
+    <p> Username: {{ user_profile.user.username }}</p>
+    <p> Email {{ user_profile.user.email }}</p>
+    <p>Bio: {{ user_profile.bio }} </p>
+</div>
 {% endblock %}

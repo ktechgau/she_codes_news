@@ -7,30 +7,45 @@
 
 {% block content %}
    
-      
-      <div class="Header_1" >
-        <h1 class="neon">Latest News</h1>
-      </div>
+<div class="Header_1" >
+    <h1 class="neon">Amazing Stories</h1>
+</div>
        
-      <div id="latest-stories">
-        {% if latest_stories %}
-            {% for story in latest_stories %}
-                <p>{{ story.title }}</p>
-            {% endfor %}
-        {% else %}
-            <p>No stories are available.</p>
-        {% endif %}
-    </div>
+<section id="Tell">
+    <h2 id="tell"> Read the Latest Stories </h2>
+    <h3>Get some inspiration and knowledge. </h3>
+    <br>
+    <h3>Enjoy the read!</h3>
+    </section>
 
-    <div id="all-stories">
-        {% if latest_stories %}
-            {% for story in all_stories %}
-                <p>{{ story.title }}</p>
-            {% endfor %}
-        {% else %}
-            <p>No stories are available.</p>
-        {% endif %}
+<div id="latest-stories">
+    {% if latest_stories %}
+        {% for story in latest_stories %}
+            {% include './storyCard.html' with story=story position=forloop.counter %}
+        {% endfor %} 
+      {% else %}
+          <p>No stories are available.</p>
+      {% endif %}
     </div>
+ </div>
+
+ <section id="Tell">
+    <h2 id="tell"> All Stories </h2>
+    <h3>Get some inspiration and knowledge. </h3>
+    <br>
+    <h3>Enjoy the read!</h3>
+    </section>
+
+<div id="all-stories">
+    {% if latest_stories %} 
+        {% for story in all_stories %} 
+            {% include './storyCard.html' with story=story  %} 
+        {% endfor %} 
+    {% else %}
+        <p>No stories are available.</p>
+    {% endif %}
+</div>
+
       
 
 {% endblock %}

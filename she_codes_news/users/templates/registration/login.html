@@ -1,13 +1,33 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}" />
+{% endblock %}
 
 {% block content %}
-<h2> Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
 
-</form>
+<section class = "header_1" >
+    <div class="Header_1" >
+      <h1 class="neon">Login</h1>
+    </div>
+  </section>
+
+<section id="Tell">
+    <h2 id="tell"> Welcome Back! </h2>
+    <h3>Whether you're about to write a story or read one </h3>
+    <br>
+    <h3>Glad to see you here again!</h3>
+    </section>
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+
+    </form>
+</div>
 
 {% endblock %}
 
