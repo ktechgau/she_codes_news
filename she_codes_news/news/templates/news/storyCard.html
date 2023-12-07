@@ -1,5 +1,5 @@
 <div class="story-card" id="story-card-{{ position }}">
-    <a href="{% url 'news:story' story.id %}"> </a>
+    <a href="{% url 'news:story' story.id %}"> 
         {% if story.image_url%}
             <img src={{story.image_url}}>
         {% else %}
@@ -13,6 +13,6 @@
                 <h6>{{ story.pub_date }}</h6>
             </div>
        
-            
+        </a>      
    
 </div>

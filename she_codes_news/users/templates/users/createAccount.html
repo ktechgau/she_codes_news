@@ -6,7 +6,19 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Create Account</h2>
+<section class = "header_1" >
+    <div class="Header_1" >
+      <h1 class="neon">Create an account</h1>
+    </div>
+  </section>
+
+  <section id="Tell">
+    <h2 id="tell"> Create Account </h2>
+    <h3>To write stories, create an account with us. </h3>
+    <br>
+    <h3>Then you can tell your story!</h3>
+    </section>  
+
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

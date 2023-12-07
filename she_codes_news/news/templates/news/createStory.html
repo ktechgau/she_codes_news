@@ -1,12 +1,30 @@
-{% extends "base.html" %}
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}" />
+{% endblock %}
 
 {% block content %}
 
-    <form action="" method="post">
+<section class = "header_1" >
+  <div class="Header_1" >
+    <h1 class="neon">Tell a Story</h1>
+  </div>
+</section>
+
+<section id="Tell">
+<h2 id="tell"> Tell the world a story! </h2>
+<h3>Are you a woman in tech? Have you any wisdom to share? Do you have a success story? Are you on a journey? </h3>
+<br>
+<h3>Share it with us!</h3>
+</section>
+<div class="container">
+    <form action="" method="post" class="form">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="submit">
     </form>
-
+</div>
     {% endblock %}
     

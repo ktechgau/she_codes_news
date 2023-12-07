@@ -9,15 +9,13 @@ class StoryForm(ModelForm):
         model = NewsStory
         fields = ['title','category', 'image_url', 'pub_date', 'content']
         widgets = {
-            'pub_date': forms.DateInput (
-                format='%m/%d/%Y',
-                attrs={
-                    'class':'form-control',
-                    'placeholder':'Select a date',
-                    'type':'date'
-                }
-            )
+            'title': forms.TextInput(attrs={'class': 'form-control','placeholder':'Enter a title for your story'}),
+            'category': forms.Select(attrs={'class': 'form-control', 'placeholder':'Select a category'}),
+            'image_url': forms.URLInput(attrs={'class': 'form-control','placeholder':'Enter a URL for your image'}),
+            'pub_date': forms.DateInput (format='%m/%d/%Y',attrs={'class':'form-control','placeholder':'Select a date','type':'date' }),
+            'content': forms.Textarea(attrs={'class': 'form-control','placeholder': 'Tell your story'}),
         }
+     
 
 #Accessing the category choices from database
     #category = forms.ChoiceField(choices=NewsStory._meta.get_field('category').choices)
