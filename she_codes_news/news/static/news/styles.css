@@ -1,144 +1,9 @@
- /* .story-card {
-    margin: 2px;
-    padding: 5px;
-    
-}
-
-.story-card:hover{
-    box-shadow: 0 0 3px #fff, 0 0 5px #fff, 0 0 10px #fff, 0 0 21px #ffa300, 0 0 3px #ffa300, 0 0 7px #ffa300;
-}
-
-.story-card img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 5px;  
-}
-
-.story-card-text{
-   display:block;
-    bottom:0;
-    padding:30px;
-    
-    background: white;
-     color: black; 
-    width: 100%; 
-    height:100%;
-    transition: .5s ease; 
-    opacity:1; 
-    font-size: 20px;
-    text-align: center;
-} 
-
-#latest-stories {
-    margin: 50px auto;
-    display: grid;
-    grid-column-start: auto; 
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 10px 10px;
-    grid-template-areas: "left-1 right-1" "left-1 right-2" "left-1 right-3";
-    max-height: 500px;
-    max-width: 1250px;
-  
-} 
-
-h3{
-    text-transform: uppercase;
-    font-size: 12px;
-}
-
-#story-card-1 {
-    grid-area: left-1;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-
-}
-
-
-
-#story-card-1:hover{
-    box-shadow: 0 0 3px #fff, 0 0 5px #fff, 0 0 10px #fff, 0 0 21px #ffa300, 0 0 3px #ffa300, 0 0 7px #ffa300; 
-}
-
-
-
-#story-card-2 {
-    grid-area: right-1;
-}
-
-#story-card-3 {
-    grid-area: right-2;
-}
-
-#story-card-4 {
-    grid-area: right-3;
-}
-
-#story-card-2 a,
-#story-card-3 a,
-#story-card-4 a {
-    display: flex;
-    max-height: 120px;
-    width: 100%;
-    height: 100%;
-    border: green solid 1px;
-}
-
-#story-card-2 .story-card-text h3,
-#story-card-3 .story-card-text h3,
-#story-card-4 .story-card-text h3 {
-    font-size: 16px;
-}
-
-#story-card-2 .story-card-text h4,
-#story-card-3 .story-card-text h4,
-#story-card-4 .story-card-text h4 {
-    font-size: 12px;
-}
-
-#story-card-2 img,
-#story-card-3 img,
-#story-card-4 img {
-    width: 100%;
-    height: 75%;
-    margin-right: 5px;
-    border: blue solid 1px;
-}
-
-#all-stories {
-
-    display: grid;
-    /* flex-wrap: wrap; 
-     grid-column-start: auto; 
-     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 40px; 
-    justify-content: space-between;
-    margin: 60px auto;
-
-}
-
-#all-stories .story-card {
-    flex-basis: 32%;
-    flex-grow: 1;
-}
-
-#story-content {
-    text-align: justify;
-}
-
-#story-content img {
-    float: right;
-    margin: 0 0 10px 10px;
-    width: 50%;
-} */
-
- 
-
 
  .story-card {
     margin: 2px;
     padding: 5px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    display:block
 }
 
 .story-card img {
@@ -153,19 +18,19 @@ h3{
 }
 
 .story-card-text{
+   
     align-items: center;
 }
 
 #latest-stories {
+
+
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 20px 20px;
-    grid-template-areas: "left-1 right-1" "left-1 right-2" ;
-    max-height: 500px;
-    margin: 50px auto;
-    margin-bottom: 250px;
-    padding: 0px 100px;
+    grid-template-areas: "left-1 right-1" "left-1 right-2" "left-1 right-3" ;
+    
 
 }
 
@@ -187,7 +52,7 @@ h3{
 
 #story-card-2 a,
 #story-card-3 a
-/* #story-card-4 a*/ { 
+ #story-card-4 a { 
     display: flex;
     max-height: 120px;
     width: 100%;
@@ -196,25 +61,25 @@ h3{
 
 #story-card-2 .story-card-text h3,
 #story-card-3 .story-card-text h3
-/* #story-card-4 .story-card-text h3 */{ 
+ #story-card-4 .story-card-text h3 { 
     font-size: 16px;
 }
 
 #story-card-2 .story-card-text h4,
 #story-card-3 .story-card-text h4
-/* #story-card-4 .story-card-text h4 */{ 
+ #story-card-4 .story-card-text h4 { 
     font-size: 12px;
 }
 
 #story-card-2 img,
 #story-card-3 img
-/* #story-card-4 img*/ { 
+ #story-card-4 img { 
     width: 50%;
     height: 100%;
     margin: 5px auto;
 }
 
-#all-stories {
+#all-stories{
 
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -224,17 +89,19 @@ h3{
     max-height: 500px;
     margin: 50px auto;
     padding: 0px 100px;
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 200px auto;
-    padding: 100px; */
+   
 }
 
-/* #all-stories .story-card {
-    flex-basis: 32%;
-    flex-grow: 1;
-} */
+#all_stories{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px 20px;
+    grid-template-areas: "left-1 right-1" "left-1 right-2" ;
+    max-height: 500px;
+    margin: 50px auto;
+    padding: 0px 100px;   
+}
 
 #story-content {
     text-align: justify;

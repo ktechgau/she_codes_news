@@ -7,7 +7,4 @@ class CustomUserCreationForm(UserCreationForm):
         model = CustomUser
         fields = ['username', 'email']
         
-        widgets = {
-            'username':forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter your email'}),
-            'email':forms.EmailInput(attrs={'class':'form-control'}),
-        }
+       

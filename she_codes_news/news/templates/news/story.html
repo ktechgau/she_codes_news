@@ -5,15 +5,27 @@
 <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}" />
 {% endblock %}
 
-
-
 {% block content %}
+<section class = "header_1" >
+    <div class="Header_1" >
+      <h1 class="neon">Stories</h1>
+    </div>
+  </section>
+  
+  <section id="Tell">
+  <h2 id="tell">{{ story.title}} </h2>
+  <h3>Written by {{ story.author}} </h3>
+  <br>
+  <h3>Enjoy the read!</h3>
+  </section>
+
+
 <div id="story-wrapper">
-    <h2>{{ story.title }}</h2>
-    <h4>{{ story.author }}</h4>
     <div id="story-content">
         <img src={{story.image_url}}>
-        {{ story.content|linebreaks }}
+             <div id="story-text">
+                {{ story.content|linebreaks }}
+             </div>
     </div>
 </div>
 {% endblock %}

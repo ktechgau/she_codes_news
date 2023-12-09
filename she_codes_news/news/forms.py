@@ -12,7 +12,7 @@ class StoryForm(ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control','placeholder':'Enter a title for your story'}),
             'category': forms.Select(attrs={'class': 'form-control', 'placeholder':'Select a category'}),
             'image_url': forms.URLInput(attrs={'class': 'form-control','placeholder':'Enter a URL for your image'}),
-            'pub_date': forms.DateInput (format='%m/%d/%Y',attrs={'class':'form-control','placeholder':'Select a date','type':'date' }),
+            'pub_date': forms.DateTimeInput (format='%d/%m/%Y %H:%M',attrs={'class':'form-control','placeholder':'Select a date','type':'datetime-local' }),
             'content': forms.Textarea(attrs={'class': 'form-control','placeholder': 'Tell your story'}),
         }
      

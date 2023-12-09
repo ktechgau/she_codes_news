@@ -13,7 +13,8 @@ class CustomUser(AbstractUser):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    bio = models.TextField(blank=True)
-
+    bio = models.TextField()
+    
+   
     def __str__(self):
         return self.user.username

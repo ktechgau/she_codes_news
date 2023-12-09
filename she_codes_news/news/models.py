@@ -7,7 +7,7 @@ class NewsStory(models.Model):
 #creating categories
     CategoryChoices = models.TextChoices(
         'blog', 'Blog','news', 'In the News',
-        'wins', 'Wins Wall',
+        'case', 'Case Studies',
     )
     title = models.CharField(max_length=200)
     author = models.ForeignKey(
@@ -24,7 +24,7 @@ class NewsStory(models.Model):
         choices = [
         ('blog', 'Blog'),
         ('news', 'In the News'),
-        ('wins', 'Wins Wall'),
+        ('case', 'Case Studies'),
         ],
 
         default = 'blog' #this is the default
@@ -34,7 +34,7 @@ class StoryCategory (models.Model):
     class CategoryChoices(models.TextChoices):
         BLOG = "blog", ("Blog")
         NEWS = "news", ('In the News')
-        WIN = "wins", ('Wins Wall')
+        CASE = "case", ('Case Studies')
     
     CatStory = models.CharField(
         max_length=20,

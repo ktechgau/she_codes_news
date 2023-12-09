@@ -5,7 +5,7 @@ from .forms import StoryForm
 from django.shortcuts import render
 from django.db.models import Q
 from django.contrib.auth.models import User
-from django.views.generic import ListView
+from django.views.generic import ListView, UpdateView, DeleteView
 
 
 class IndexView(generic.ListView):
@@ -18,7 +18,9 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:4]
+        context['latest_stories'] = NewsStory.objects.all().order_by('-pub_date')[:2]
+        context['all_stories'] = NewsStory.objects.all().order_by('-pub_date')[2:]
+        
         context['CategoryChoices'] = StoryCategory.CategoryChoices.choices
 
         #context['search_form'] = SearchForm()
@@ -41,7 +43,24 @@ class AddStoryView(generic.CreateView):
     
 
     
+class UpdateStoryView(generic.UpdateView):
+    model=NewsStory
+    template_name = "news/update.html"
+    fields = ['title','category', 'image_url', 'pub_date', 'content']
+    success_url = reverse_lazy('news:index')
+   
 
+
+class DeleteStoryView(generic.DeleteView):
+    model = NewsStory
+    template_name = "news/delete.html"
+    success_url = reverse_lazy('news:index')
+    
+  
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
     
 #     model = NewsStory
 #     template_name = 'news/search_results.html'
@@ -107,14 +126,4 @@ class AddStoryView(generic.CreateView):
 
 #trying to add the update feature
 
-class EditStoryView(generic.UpdateView):
-    model=NewsStory
-    form_class = StoryForm
-    context_object_name = 'news/createStory.html'
-    success_url = reverse_lazy('news:index')
-    template_name = "update.html"
-    #fields = ['title','pub_date', 'content', 'category']
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)

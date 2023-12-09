@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import DetailView
 from django.shortcuts import render, redirect, get_object_or_404
 from news.models import NewsStory
+from django.db.models import Q
 
 
 class CreateAccountView(CreateView):
@@ -40,6 +41,7 @@ class SearchAuthorView(generic.DetailView):
     template_name = 'news/author_search.html'
     context_object_name = 'author'
 
+    
     def get_object(self, *args, **kwargs):
         return get_object_or_404(CustomUser, username=self.kwargs['username'])
     

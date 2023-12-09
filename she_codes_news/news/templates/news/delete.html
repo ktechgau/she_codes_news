@@ -14,19 +14,15 @@
 </section>
 
 <section id="Tell">
-<h2 id="tell"> Need to make changes?! </h2>
-<h3>Simply change the details below and you're good to go! </h3>
-
+<h2 id="tell"> Are you sure you want to delete the story? </h2>
+<h3>Please make sure as this is unreversible</h3> </h3>
 </section>
+
 <div class="container">
     <form action="" method="post" class="form">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Update">
+        
+        <input type="submit" value="Delete Story">
     </form>
 </div>
-
-
-    
-   
     {% endblock %}
