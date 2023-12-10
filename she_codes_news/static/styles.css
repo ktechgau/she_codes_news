@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
-
+/*settings for site, nav and base templates*/
 
 html {
     box-sizing: border-box;
@@ -30,10 +30,10 @@ header {
     margin: 0 20px;
 }
 
-.header{
-    border: red solid 1px;
-
+.socials img:hover{
+    color:orange;
 }
+
 
 .Header_1{
     background: rebeccapurple;
@@ -83,9 +83,7 @@ h1 {
     text-align: center;
 }
 
-h2 {
-   /*font-family: 'Montserrat Subrayada', sans-serif; */
-}
+
 
 h3 {
     font-size: 2rem;
@@ -117,6 +115,10 @@ a {
     color: #000;
 }
 
+.icons .socials:hover{
+    color:orange;
+}
+
 /*Header styling*/
 
 
@@ -132,7 +134,7 @@ a {
 
 
 
-/* styling the CreateStory Form */
+/* styling Forms */
 #Tell{
     margin: 40px auto;
    text-align: center;
@@ -207,4 +209,15 @@ label{
 
 #story-text{
     margin: 10px 200px;
+}
+
+/* Styling Comments section */
+
+#comments{
+    margin: 40px auto;
+    text-align: center;
+}
+
+#form-comments{
+    margin:60px auto;
 }

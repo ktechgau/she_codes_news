@@ -22,6 +22,10 @@
     align-items: center;
 }
 
+.story-card-text .link:hover{
+    color:orange;
+}
+
 #latest-stories {
 
 
@@ -78,6 +82,7 @@
     height: 100%;
     margin: 5px auto;
 }
+
 
 #all-stories{
 

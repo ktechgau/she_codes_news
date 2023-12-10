@@ -1,6 +1,6 @@
 from django.urls import path, include
 from . import views
-from .views import IndexView, StoryView, AddStoryView, UpdateStoryView, DeleteStoryView
+from .views import IndexView, StoryView, AddStoryView, UpdateStoryView, DeleteStoryView, AddCommentsView
 from users.views import SearchAuthorView
 
 
@@ -13,5 +13,6 @@ urlpatterns = [
     path('author/<str:username>', SearchAuthorView.as_view(), name='author_search'),
     path('edit/<int:pk>', views.UpdateStoryView.as_view(), name='update_story'),
     path('edit/<int:pk>/delete', views.DeleteStoryView.as_view(), name='delete_story'),
+    path('<int:pk>/comments/', views.AddCommentsView.as_view(), name='addComment'),
     path('users/', include('users.urls')),
 ]

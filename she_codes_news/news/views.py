@@ -1,8 +1,10 @@
+from django.forms.models import BaseModelForm
+from django.http import HttpResponse
 from django.views import generic
 from .models import NewsStory,StoryCategory
 from django.urls import reverse_lazy
-from .forms import StoryForm
-from django.shortcuts import render
+from .forms import StoryForm, CommentForm
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.views.generic import ListView, UpdateView, DeleteView
@@ -31,6 +33,11 @@ class StoryView(generic.DetailView):
     template_name = "news/story.html"
     context_object_name = "story"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CommentForm()
+        return context
+    
 class AddStoryView(generic.CreateView):
     form_class = StoryForm
     context_object_name = 'news/createStory.html'
@@ -62,68 +69,21 @@ class DeleteStoryView(generic.DeleteView):
         form.instance.author = self.request.user
         return super().form_valid(form)
     
-#     model = NewsStory
-#     template_name = 'news/search_results.html'
-#     context_object_name = 'stories'
 
-#     def get_queryset(self):
-#         form= SearchForm(self.request.GET)
-#         queryset = super().get_queryset()
-
-    #     if form.is_valid():
-    #         category = form.cleaned_data('category')
-    #         author = form.cleaned_data['author']
-
-    #         if category:
-    #             queryset = queryset.filter(category=category)
-
-    #         if author:
-    #             queryset = queryset.filter(author=author)
-        
-
-    #     return queryset
+class AddCommentsView(generic.CreateView):
+    form_class = CommentForm
     
-    # def get_context_data(self, **kwargs):
-    #     context = supßer().get_context_data(**kwargs)
-    #     context['form'] = SearchForm(self.request.GET)
-    #     return context
+
+    def get(self,request, *args, **kwargs):
+        return redirect ("news:story", pk=self.kwargs.get("pk"))
     
-    # def search_results(request):
-    #     view = SearchResultsView.as_view()
-    #     return view(request)
-        #filtering using author and category
-        # queryset = NewsStory.object.filter(category=category, author=author)
-
-    # else:
-    #     queryset = NewsStory.objects.all()
-
-    # context = {
-    #     'form': form,
-    #     'stories': queryset,
-    # }
-
-    # return render(request, 'news/search_results.html', context)
-# class SearchResultsView(generic.ListView):
-#     model = NewsStory
-#     form_class_2 = SearchForm
-#     template_name = 'news/search_results.html'
-#     context_object_name = 'stories'
-
-#     def get_queryset(self):
-#         form = SearchForm(self.request.GET)
-#         queryset = super().get_queryset()
-
-#         if form.is_valid():
-#             category2 = form.cleaned_data.get('category')
-#             author_query = form.cleaned_data.get('author')
-
-#             if category2:
-#                 queryset = queryset.filter(category=category2)
-#             if author_query:
-#                 queryset = queryset.filter(Q(author__username__icontains=author_query | Q(author__first_name__icontains=author_query) | Q(author__last_name__icontains=author_query)))
-      
-#         return queryset
-
-#trying to add the update feature
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        pk = self.kwargs.get("pk")
+        form.instance.story = get_object_or_404 (NewsStory,pk=pk)
+        return super().form_valid(form)
+    
+    def get_success_url(self):
+        return reverse_lazy('news:story', kwargs={'pk':self.kwargs.get('pk')})
 
 

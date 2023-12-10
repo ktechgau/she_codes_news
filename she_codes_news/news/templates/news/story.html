@@ -13,10 +13,10 @@
   </section>
   
   <section id="Tell">
-  <h2 id="tell">{{ story.title}} </h2>
-  <h3>Written by {{ story.author}} </h3>
-  <br>
-  <h3>Enjoy the read!</h3>
+    <h2 id="tell">{{ story.title}} </h2>
+    <h3>Written by {{ story.author}} </h3>
+    <br>
+    <h3>Enjoy the read!</h3>
   </section>
 
 
@@ -25,7 +25,36 @@
         <img src={{story.image_url}}>
              <div id="story-text">
                 {{ story.content|linebreaks }}
-             </div>
+              </div>
     </div>
 </div>
+
+<section id="comments">
+  <h3 id="tell">Comments</h3>
+  {% for comment in story.comments.all %}
+    <p> {{ comment.created_on}}</p>
+    <p> {{ comment.name}}</p>
+    <p> {{ comment.body}}</p>
+
+  {% empty %}
+    <p> There are no comments to display</p>
+</section>
+
+  {% endfor %} 
+
+  {% if request.user.is_authenticated %}
+  <section id="form-comments">
+    <h3 id="tell"> Write a comment</h3>
+      <form method = "POST" action="{% url 'news:addComment' story.id %}" class="form">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type="submit" value="submit">
+      </form>
+  </section>
+  
+  {% else %}
+    <p> You must login or have an account to leave a comment. </p>
+    <p><a href="{% url 'news:index' %}" class = "orange">Login or Create account</a></p>
+  {% endif %}
+            
 {% endblock %}

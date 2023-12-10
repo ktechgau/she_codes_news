@@ -42,4 +42,22 @@ class StoryCategory (models.Model):
         default=CategoryChoices.BLOG,
         
     )
+
+class Comment(models.Model):
+    name = models.CharField(max_length=80)
+    created_on = models.DateTimeField(auto_now_add = True)
+    body = models.TextField()
+    story = models.ForeignKey(
+        NewsStory,
+        related_name= "comments",
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.body, self.name)
+
+    
+
+   
+    
     
