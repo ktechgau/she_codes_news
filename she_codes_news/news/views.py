@@ -63,11 +63,10 @@ class DeleteStoryView(generic.DeleteView):
     template_name = "news/delete.html"
     success_url = reverse_lazy('news:index')
     
-  
+    def delete(self, request, *args, **kwargs):
+        return super().delete(request, *args, **kwargs)
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+
     
 
 class AddCommentsView(generic.CreateView):

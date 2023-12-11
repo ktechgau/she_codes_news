@@ -43,10 +43,7 @@ class UpdateProfileView(generic.UpdateView):
     fields = ['username', 'email']
     success_url= reverse_lazy('users:account_view')  
     
-class DeleteProfileView(generic.DeleteView):
-    model = CustomUser
-    template_name = "users/delete_profile.html"
-    success_url = reverse_lazy('users:account_view')
+
 
 # Search feature for stories by author
 class SearchAuthorView(generic.DetailView):
