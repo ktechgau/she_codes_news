@@ -8,7 +8,7 @@ Our brief was to create a news website for She Codes Australia that allows users
 ## How To Run This Code
 1. _Clone the repo to your local machine_ - Navigate to the directory of your choice and run the following command:
 
-    * `git clone https://github.com/Rocketmanda/she_codes_news.git`
+    * `git clone [https://github.com/ktechgau/she_codes_news]`
 
 2. _Set up Virtual Environment_ - In your terminal, navigate to the folder containing requirements.txt file:
 
