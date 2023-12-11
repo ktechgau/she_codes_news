@@ -1,6 +1,6 @@
 from typing import Any
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views import generic
 from .models import CustomUser, UserProfile
 from .forms import CustomUserCreationForm
@@ -9,6 +9,7 @@ from django.views.generic import DetailView
 from django.shortcuts import render, redirect, get_object_or_404
 from news.models import NewsStory
 from django.db.models import Q
+
 
 
 class CreateAccountView(CreateView):
@@ -22,18 +23,30 @@ class CreateAccountView(CreateView):
         UserProfile.objects.create(user=self.object)
         return response
 
-#Creates a view to display the user profile - login is required
 
+#creates a view to display the user profile - login required
+ 
+@login_required #ensures login first
 def  account_view(request):
-    #ensures user instance is used, not LazyObject
-    user_instance=request.user if request.user.is_authenticated else None
+
+    #retrieves users profile or creats one if doesn't exist
+    user_profile, created = UserProfile.objects.get_or_create(user=request.user)
     
-    #check if user is authorised before trying to get ot create a profile
-    if user_instance:
-        user_profile, created= UserProfile.objects.get_or_create(user=user_instance)
-        return render(request, 'users/account.html', {'user_profile': user_profile})
-    else:
-        return redirect('login')
+    #Retrieves user stories
+    user_stories = NewsStory.objects.filter(author = request.user) 
+     
+    return render(request, 'users/account.html', {'user_profile':user_profile, 'user_stories': user_stories})
+    
+class UpdateProfileView(generic.UpdateView):
+    model=CustomUser
+    template_name="users/update_profile.html"
+    fields = ['username', 'email']
+    success_url= reverse_lazy('users:account_view')  
+    
+class DeleteProfileView(generic.DeleteView):
+    model = CustomUser
+    template_name = "users/delete_profile.html"
+    success_url = reverse_lazy('users:account_view')
 
 # Search feature for stories by author
 class SearchAuthorView(generic.DetailView):

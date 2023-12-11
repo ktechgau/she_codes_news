@@ -43,7 +43,7 @@
   {% endfor %} 
 
   {% if request.user.is_authenticated %}
-  <section id="form-comments">
+  <section id="comments">
     <h3 id="tell"> Write a comment</h3>
       <form method = "POST" action="{% url 'news:addComment' story.id %}" class="form">
         {% csrf_token %}

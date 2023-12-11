@@ -1,0 +1,28 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<section class = "header_1" >
+  <div class="Header_1" >
+    <h1 class="neon">Profile</h1>
+  </div>
+</section>
+
+<section id="Tell">
+<h2 id="tell"> Are you sure you want to delete your Profile? </h2>
+<h3>Please make sure as this is unreversible</h3> </h3>
+</section>
+
+<div class="container">
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        
+        <input type="submit" value="Delete Profile">
+    </form>
+</div>
+    {% endblock %}

@@ -15,19 +15,18 @@
   
   <section id="Tell">
   <h2 id="tell"> Your Profile </h2>
-  <h3>Here are your account details. </h3>
+  <h3>Update your profile details </h3>
   <br>
-  <h3>We're glad you're here with us!</h3>
   </section>
 
 <section id="comments">
-  <h3 id="tell">Your details:</h3>
-    <p> Username: {{ request.user.username}}</p>
-    <p> Email {{ request.user.email }}</p>
-    <h4><a href="{% url 'users:update_profile' user.id %}"><small>[Edit]</small></a>
-      <a href="{% url 'users:delete_profile' user.id %}"><small>[Delete]</small></a>
-    </h4>
-  
+    <div class="container">
+        <form action="" method="post" class="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Update">
+        </form>
+    </div>
   <h3 id="tell">Your Stories</h3>
 </section>
 <div id="all_stories">

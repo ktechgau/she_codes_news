@@ -6,7 +6,7 @@
             <img src="https://picsum.photos/600">
         {% endif %}
             <div class="story-card-text">
-                <h4>{{ story.title }}  {% if request.user.is_authenticated %}<a href="{% url 'news:update_story' story.id %}"><small>{Edit}</small></a><a href="{% url 'news:delete_story' story.id %}"><small>{Delete}</small></h4>{% endif %}
+                <h4>{{ story.title }}  {% if request.user.is_authenticated %}<a href="{% url 'news:update_story' story.id %}"><small>[Edit]</small></a><a href="{% url 'news:delete_story' story.id %}"><small>[Delete]</small></h4>{% endif %}
                 <h3>{{ story.get_category_display }}</h3>
                 <h5><small>Written by</small> <a class="link" href="{% url 'news:author_search' story.author %}"> {{ story.author }} </h5></a>
                 <h5>{{ story.pub_date }}</h5>

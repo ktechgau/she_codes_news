@@ -85,5 +85,8 @@ class AddCommentsView(generic.CreateView):
     
     def get_success_url(self):
         return reverse_lazy('news:story', kwargs={'pk':self.kwargs.get('pk')})
+    
+
+
 
 
